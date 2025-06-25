@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}">DashBoard</title>
+</head>
+<body>
+	<section>
+	<div class="card">
+			<div class="card-body">
+				<h1 class="text-center">Update Contact</h1>
+					
+					 <!-- <div th:if="${session.message}" class="container">
+						<div th:class="'alert ' + ${session.message.type} + ' text-center'" role="alert">
+						  	<span th:text="${session.message.content}"></span>
+						</div>
+					</div>  -->
+					
+					
+				<!-- 	<div th:if="${session.message}" class="container mt-4">
+					  <div th:class="'alert ' + ${session.message.type} + ' alert-dismissible fade show text-center shadow rounded'" 
+					       role="alert" id="alertMessage">
+					    <span th:text="${session.message.content}"></span>
+					    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					      <span aria-hidden="true">&times;</span>
+					    </button>
+					  </div>
+					</div> -->
+
+					
+					
+						
+				<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+        
+            <div class="card shadow-lg rounded-4 border-0">
+                <div class="card-header bg-primary text-white rounded-top-4">
+                    <h4 class="mb-0"><i class="fas fa-user-edit me-2"></i>Update Contact</h4>
+                </div>
+                
+                <div class="card-body px-5 py-4">
+                    <form th:object="${contact}" th:action="@{/user/update_process}" method="POST" enctype="multipart/form-data">
+
+                        <!-- Name -->
+                        <div class="form-group mb-3">
+                            <label for="name" class="form-label fw-semibold">Name</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                <input type="text" class="form-control" id="name" name="name"
+                                       th:value="${contact.name}" placeholder="Enter full name" required>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label fw-semibold">Email</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-regular fa-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" name="email"
+                                       th:value="${contact.email}" placeholder="example@mail.com" required>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="form-group mb-3">
+                            <label for="phone" class="form-label fw-semibold">Phone</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
+                                <input type="text" class="form-control" id="phone" name="phone"
+                                       th:value="${contact.phone}" placeholder="Phone number">
+                            </div>
+                        </div>
+
+                        <!-- Work -->
+                        <div class="form-group mb-3">
+                            <label for="work" class="form-label fw-semibold">Work</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fa-solid fa-briefcase"></i></span>
+                                <input type="text" class="form-control" id="work" name="work"
+                                       th:value="${contact.work}" placeholder="e.g. Developer, Manager">
+                            </div>
+                        </div>
+                        
+                        <!-- Current image preview (if exists) -->
+						<div class="mt-2 text-center">
+							<img th:if="${contact.image != null}" th:src="@{'/img/' + ${contact.image}}" 
+							     alt="Current Image" class="rounded-circle"  width="100" height="100"  />
+						</div>
+                        
+                        
+						<!-- File input -->
+						<div class="input-group mt-3">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<i class="fa-solid fa-image"></i>
+								</div>
+							</div>
+							<input type="file" class="form-control" name="profileImage" id="image">
+						</div>
+                        
+                        
+                        <input type="hidden" th:value="${contact.cID}" name="cID" />
+                        
+
+                        <!-- Submit Button -->
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg shadow-sm">
+                                <i class="fas fa-save save"></i>Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::Layout(~{::section})}">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}">DashBoard</title>
+</head>
+<body th:attr="data-modal-open=${modalOpen ?: false}">
+
+
+<section>
+  <div class="container mt-4">
+    <!-- Welcome -->
+   
+    <!-- Heading Section -->
+    <div class="text-center my-4">
+      <h1 class="display-6 fw-bold text-primary">Welcome to Your Settings</h1>
+      <hr class="w-660 mx-auto border-3 border-primary" />
+    </div>
+		<div th:if="${session.message_p}" class="alert" th:classappend="' alert-' + ${session.message_p.type}" role="alert">
+		  <span th:text="${session.message_p.content}">Message Text</span>
+		</div>
+	
+    <!-- Cards Grid -->
+	<div class="row g-4 mt-5 my-5">
+	
+	  <!-- Profile -->
+	  <div class="col-sm-6 col-lg-4">
+	    <div class="card text-white bg-primary shadow-sm h-100"
+	          style="cursor: pointer;">
+	      <div class="card-body text-center">
+	        <h5 class="card-title">PROFILE</h5>
+	      </div>
+	    </div>
+	  </div>
+	
+	 
+	  
+	  <!-- RESET PASSWORD CARD -->
+		<div class="col-sm-6 col-lg-4">
+		  <div class="card text-white bg-success shadow-sm h-100" style="cursor: pointer;" data-toggle="modal" data-target="#resetPasswordModal">
+		    <div class="card-body text-center">
+		      <h5 class="card-title">RESET PASSWORD</h5>
+		    </div>
+		  </div>
+		</div>
+	  
+	
+	  <!-- Update Profile -->
+	  <div class="col-sm-6 col-lg-4">
+	    <div class="card text-white bg-dark shadow-sm h-100"
+	         onclick="openCardModal('Update Profile', 'Update your personal details.', true)"
+	         style="cursor: pointer;">
+	      <div class="card-body text-center">
+	        <h5 class="card-title">UPDATE PROFILE</h5>
+	      </div>
+	    </div>
+	  </div>
+	
+	</div>
+	
+</div>
+
+
+
+<!-- 🔐 Reset Password Modal -->
+<div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content text-dark">
+      <div class="modal-header">
+        <h5 class="modal-title">Reset Password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+      </div>
+
+      <form th:action="@{/user/change-password}" method="post">
+        <div class="modal-body">
+        
+         <!-- Show password success or error message -->
+		  <div th:if="${session.message_p}" 
+		       class="alert mb-3" 
+		       th:classappend="' alert-' + ${session.message_p.type}" 
+		       role="alert">
+		    <span th:text="${session.message_p.content}">Message Text</span>
+		  </div>
+        
+          <div class="form-group">
+           <label for="oldPassword">Old Password</label>
+		   <input type="password" id="oldPassword" name="oldPassword" class="form-control" required />
+		  </div>
+          <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" name="newPassword" class="form-control" required /></div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Update Password</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+</section>
+
+</body>
+</html>

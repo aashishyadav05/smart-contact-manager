@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="Layout(content)">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- ✅ Local Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/css/normal/style2.css}" />
+
+    <!-- Dynamic Title -->
+    <title th:text="${title}">Home</title>
+  </head>
+
+ <body th:attr="data-modal-open=${modalOpen ?: false}">
+
+
+    <!-- ✅ Navbar -->
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">SCM</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto text-uppercase">
+          <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/about}">About</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
+          <li class="nav-item"><a class="nav-link" th:href="@{/user_profile}">Profile</a></li>
+        </ul>
+      </div>
+    </nav>
+	<!-- End of Navbar -->
+	
+	
+	
+	<!-- Side Bar -->
+	<div class="sidebar sidebar-collapsed " id="sidebar">
+		  <span onclick="toggleSidebar()" id="toggleBtn" class="toggle-btn">
+		    <i class="fas fa-bars"></i> <!-- Will change to "X" when expanded -->
+		  </span>
+		
+		  <div class="sidebar-links">
+			  	<a th:href="@{/user/dashboard}" class="item">
+			    <i class="fas fa-home"></i> <span class="link-text">Home</span>
+			  </a>
+			  <a th:href="@{/user/all_contact}" class="item">
+			    <i class="fas fa-address-book"></i> <span class="link-text">View Contacts</span>
+			  </a>
+			  <a th:href="@{/user/add_contact}" class="item">
+			    <i class="fas fa-user-plus"></i> <span class="link-text">Add Contacts</span>
+			  </a>
+			  <a th:href="@{/user/profile}" class="item">
+			    <i class="fas fa-user"></i> <span class="link-text">Your Profile</span>
+			  </a>
+			  <a th:href="@{/user/settings}" class="item">
+			   <i class="fa-solid fa-gear"></i> <span class="link-text">Settings</span>
+			  </a>
+			  <a th:href="@{/logout}" class="item">
+			    <i class="fas fa-sign-out-alt"></i> <span class="link-text">Logout</span>
+			  </a>
+			  <div class="divider"></div>
+		  </div>
+	</div>
+
+
+	<!-- End sidebar -->
+	
+	
+	
+	<!-- Content -->
+	<div class="content content-expanded mt-5">
+	    <div th:replace="${content}"></div>
+	</div>
+	<!-- End of Content area -->
+
+
+
+	<!-- ✅ First: Load jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- ✅ Bootstrap JS (Offline) -->
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+    <!-- ✅ Your JS -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script>
+    
+    
+    
+  
+    function toggleEditBox(id) {
+        const box = document.getElementById(id);
+        if (box.style.display === 'none' || box.style.display === '') {
+            box.style.display = 'table-row';
+        } else {
+            box.style.display = 'none';
+        }
+    }
+    
+
+    function deleteContact(cID) {
+    	swal({
+    		  title: "Are you sure?",
+    		  text: "Yor Want to Delete Contact..",
+    		  icon: "warning",
+    		  buttons: true,
+    		  dangerMode: true,
+    		})
+    		.then((willDelete) => {
+    		  if (willDelete) {
+    		   window.location="/user/delete/"+cID;
+    		  } else {
+    		    swal("Your Contact is safe!");
+    		  }
+    		});
+    }
+    </script>
+    
+    
+    <script th:src="@{/js/script.js}"></script>
+
+  </body>
+</html>

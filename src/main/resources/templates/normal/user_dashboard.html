@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}">DashBoard</title>
+</head>
+<body>
+<section>
+  <div class="container mt-4">
+    <!-- Welcome -->
+    <h2 class="text-center text-white">👋 Welcome, <span th:text="${user.name}">User</span>!</h2>
+
+    <!-- Heading Section -->
+    <div class="text-center my-4">
+      <h1 class="display-5 fw-bold text-primary">Welcome to Your Dashboard</h1>
+      <p class="lead text-muted">Manage your contacts efficiently — view, edit, and organize everything in one place.</p>
+      <hr class="w-50 mx-auto border-2 border-primary" />
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="row g-4 mt-5 mt-5 my-5">
+
+      <!-- Total Contacts -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-primary shadow-sm h-100">
+          <div class="card-body text-center">
+            <h5 class="card-title">📇 Total Contacts</h5>
+            <p class="card-text fs-3 fw-bold" th:text="${totalContacts}">0</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Contact -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-success shadow-sm h-100">
+          <div class="card-body text-center">
+            <h5 class="card-title">🕑 Recent Contact</h5>
+            <p class="card-text fs-5" th:text="${recentContactName}">None</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Contact Button -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="card text-white bg-dark shadow-sm h-100">
+          <div class="card-body text-center">
+            <h5 class="card-title">➕ Add New Contact</h5>
+            <a th:href="@{/user/add_contact}" class="btn btn-light mt-3 px-4">Create Contact</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

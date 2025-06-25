@@ -1,0 +1,309 @@
+@charset "UTF-8";
+
+/* RESET STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY BASE */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+  background-color: #e2e2e2;
+}
+
+body {
+            background-image: url('/img/bg2.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+}
+
+.banner{
+	width:100%;
+	height: 93vh;
+	background:linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)),url(../img/contact.jpg);
+	background-size:cover;
+	color: white;
+	
+}
+.my-card {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(to right, 
+    rgb(128, 0, 255), 
+    rgb(128, 255, 0), 
+    rgb(0, 255, 64), 
+    rgb(46, 46, 192)
+  );
+  border-radius: 10px;
+  color: white;
+}
+
+/* sidebar css *//* Sidebar default */
+.sidebar {
+  width: 250px;
+  background: #212f3d;
+  height: 100vh;
+  position: fixed;
+  padding-top: 20px;
+  transition: width 0.3s ease;
+  z-index: 1000;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* When collapsed */
+.sidebar-collapsed {
+  width: 60px;
+}
+
+/* Items inside sidebar */
+.sidebar .item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 18px;
+  color: gray;
+  text-decoration: none;
+}
+.sidebar .item i {
+  margin-right: 15px;
+  font-size: 20px;
+} 
+
+/* Text inside items */
+.link-text {
+  display: inline-block;
+  color: rgb(255, 255, 255); /* White text */
+}
+
+.sidebar-collapsed .link-text {
+  display: none;
+}
+
+/* Toggle icon */
+.toggle-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
+}
+.sidebar-collapsed .toggle-btn {
+  left: 15px;
+  right: auto;
+}
+
+/* Space between toggle and items */
+.sidebar-links {
+  margin-top: 60px;
+}
+
+
+.sidebar a:hover{
+	background: #e2e2e2;
+	color: cyan;
+}
+.sidebar .divider{
+	height: .5px;
+	width: 100%;
+	background: #e2e2e4;
+	margin-top: 10px;	
+}
+
+
+/* ✅ Content default */
+.content {
+  margin-left: 65px;
+  padding: 20px;
+	rgb(64, 0, 64);  
+	transition: margin-left 0.3s ease;
+}
+
+/* When sidebar is collapsed */
+.content-collapsed {
+  margin-left: 250px;
+}
+/* Avatar image or letter container */
+.avatar-img {
+  width: 35px;
+  height: 35px;
+}
+
+/* Default avatar (letter circle) */
+.default-avatar {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+
+
+/* Contact name spacing and alignment */
+.profile_name_picture {
+  vertical-align: middle;
+  object-fit:cover;
+}
+
+
+.plain-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+.contact-name {	
+	padding-left: 10px;
+	font-size:18px;
+	font-family : Roboto,sans-serif;
+  	font-weight: 600;
+  text-decoration: none;
+}
+
+.search-result{
+	position: absolute;
+	background-color: white;
+	color: black;
+	padding: 10px;
+	width: 100%;
+	border: 1px solid gray;
+	display: none;	
+}
+
+
+
+
+
+
+
+/* ========== All Contacts Table: Mobile Responsive ========== */
+@media (max-width: 768px) {
+  
+  /* Table font and padding */
+  table th, table td {
+    font-size: 0.9rem;
+    padding: 6px 8px;
+    vertical-align: middle;
+  }
+
+  /* Profile image and name alignment in table */
+  .profile_name_picture {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .profile_name_picture img,
+  .default-avatar {
+    width: 70px !important;
+    height: 70px !important;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+
+  /* Contact name text */
+  .contact-name {
+    font-size: 1rem;
+    padding-left: 0 !important;
+  }
+
+  /* Action buttons spacing */
+  .btn {
+    margin: 4px 2px;
+    font-size: 0.75rem;
+  }
+
+  /* Make table horizontally scrollable if too wide */
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  /* Search input full width */
+  #search-input {
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  /* Table header row fix */
+  .thead-dark th {
+    font-size: 0.95rem;
+    text-align: center;
+  }
+}
+
+
+/* Mobile View Fixes */
+@media (max-width: 768px) {
+
+  /* Make profile image responsive */
+  .profile_indi_contact,
+  .rounded-circle {
+    width: 150px !important;
+    height: 150px !important;
+    font-size: 80px !important;
+  }
+
+  /* Center the image properly */
+  .profile_indi_contact,
+  .rounded-circle {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Fix heading size */
+  h1 {
+    font-size: 1.5rem !important;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* Table spacing */
+  table th,
+  table td {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  /* Buttons center align */
+  .btn-group,
+  .mt-3.text-center {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Reduce padding in card */
+  .card.custom-card {
+    padding: 1rem;
+  }
+
+  /* Optional: shrink max-width of card */
+  .card.custom-card {
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
+  }
+}
+
+
+
+

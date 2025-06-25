@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}">DashBoard</title>
+</head>
+<body>
+<section>
+  <div class="container">
+    <div class="card">
+		<div class="card-body">
+        
+		   <div th:if="${user}">
+		        <!-- Profile Image Centered -->
+		     <div class="container d-flex justify-content-center">
+  
+				  <!-- If image exists -->
+				  <img th:if="${user.imageurl != 'default_img.png'}"
+				       th:src="@{'/img/' + ${user.imageurl}}"
+				       alt="Profile"
+				       class="rounded-circle border"
+				       style="width: 250px; height: 250px; object-fit: cover;" />
+				
+				  <!-- If default image -->
+				  <div th:if="${user.imageurl == 'default_img.png'}"
+				       th:text="${user.name.substring(0, 1)}"
+				       class="bg-primary rounded-circle text-white"
+				       style="width: 250px; height: 250px; font-size: 180px; display: flex; align-items: center; justify-content: center;">
+				  </div>
+				
+			</div>
+
+			<h1 class="text-center" style="color:black;" th:text="${user.name}"></h1>
+				
+	     
+	        <!-- User Info Table -->
+	          <table class="table text-center table-borderless">
+	            <tbody>
+	              <tr>
+	                <th>Name:</th>
+	                <td th:text="${user.name}">Aashish</td>
+	              </tr>
+	              <tr>
+	                <th>Email:</th>
+	                <td th:text="${user.email}">example@gmail.com</td>
+	              </tr>
+	              <tr>
+	                <th>Role:</th>
+	                <td th:text="${user.role}">User</td>
+	              </tr>
+	              <tr>
+	                <th>Status:</th>
+	                <td th:text="${user.enabled ? 'Enabled' : 'Disabled'}">Enabled</td>
+	              </tr>
+	            </tbody>
+	          </table>
+	     
+	        <!-- Buttons -->
+	        <div class="mt-3 text-center">
+	          <a href="#" class="btn btn-primary btn-sm mx-2">Edit</a>
+	          <a href="#" class="btn btn-secondary btn-sm mx-2">Other</a>
+	        </div>
+	
+	      </div>
+	
+	      <!-- Else condition -->
+	      <div th:unless="${user}" class="text-center text-danger">
+	        <h1>Sorry..! 🫣</h1>
+	        <h4>You don't have permission to view this contact.</h4>
+	      </div>
+	  </div>
+    </div>
+  </div>
+</section>
+
+
+
+</body>
+</html>

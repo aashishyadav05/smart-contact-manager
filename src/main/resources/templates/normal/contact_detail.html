@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${title}">DashBoard</title>
+</head>
+<body>
+	<section>
+  <div class="container my-5">
+    <div class="card-body">
+    
+      <div class="row align-items-center" th:if=${contact}>
+
+        		<!-- Profile Image Section -->
+		        <div class="col-md-4 text-center">
+		               		<img th:if="${contact.image != 'default_img.png'}"
+							th:src="@{'/img/' + ${contact.image}}"
+							alt="Profile"
+							class="rounded-circle border"
+		               		style="width: 250px; height: 250px; object-fit: cover;"/>
+										
+							<!-- If no image, show name's first character in a circle -->
+							<div th:if="${contact.image == 'default_img.png'}"
+						    	th:text="${contact.name.substring(0, 1)}"
+						    	class="profile_indi_contact"
+		               			style="width: 250px; height: 250px; object-fit: cover;">
+						    </div>
+		               
+		        </div>
+
+      			  <!-- Profile Info Section -->
+		        <div class="col-md-7 ml-5">
+			          <h2 class="fw-bold mb-4">Name : <span th:text="${contact.name}">Aashish</span></h2>
+			
+			          <div class="mb-2">
+			            <strong>Email</strong> : <span th:text="${contact.email}">example@gmail.com</span>
+			          </div>
+			
+			          <div class="mb-2">
+			            <strong>Number</strong> : <span th:text="${contact.phone}">7086532222</span>
+			          </div>
+			
+			          <div class="mb-2">
+			            <strong>About Contact</strong> : <span th:text="${contact.work}">Student</span>
+			          </div>
+			
+			          <hr class="my-4" />
+			
+			          <!-- Action Links -->
+			          <div>
+			            <a href="#" class="btn btn-sm btn-primary mr-2">Edit</a>
+			            <a href="#" th:href="@{'/user/delete/'+${contact.cID}}" class="btn btn-sm btn-danger mr-2">Delete</a>
+			            <a href="#" class="btn btn-sm btn-secondary">Other</a>
+			          </div>
+        		</div>
+
+      </div>
+      
+      <!-- esle  -->
+      <div th:unless="${contact}">
+	      <h1>Sorry..! 🫣</h1>
+    	  <h2>You Don't have Permission See This Contact..!</h2>
+      </div>
+      
+      
+      
+      
+      
+      
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
