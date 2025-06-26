@@ -1,4 +1,3 @@
-
 # Smart Contact Manager
 
 A secure contact management system built with Spring Boot and Thymeleaf. Users can sign up, verify their email, and manage their contacts in a personalized dashboard.
@@ -6,10 +5,10 @@ A secure contact management system built with Spring Boot and Thymeleaf. Users c
 ## 💻 Tech Stack
 
 - Java 17
-- Spring Boot
+- Spring Boot 3.x
 - Thymeleaf
 - Spring Security
-- MySQL
+- **PostgreSQL** (previously MySQL)
 - Maven
 
 ## ✅ Features
@@ -22,6 +21,7 @@ A secure contact management system built with Spring Boot and Thymeleaf. Users c
 - Pagination for efficient browsing
 
 ## 📁 Project Structure
+
 
 ```
 smartcontactmanager/
@@ -41,7 +41,17 @@ smartcontactmanager/
 
    ```
 2. Setup database in `application.properties`
-3. Run the app using Eclipse or:
+   Example PostgreSQL config:
+   ```bash
+   spring.datasource.url=jdbc:postgresql://localhost:5432/smartcontactdb
+   spring.datasource.username=your_postgres_username
+   spring.datasource.password=your_postgres_password
+   
+   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+   spring.jpa.hibernate.ddl-auto=update
+   ```
+   
+4. Run the app using Eclipse or:
    ```bash
    mvn spring-boot:run
    ```
