@@ -50,12 +50,21 @@
 			<optional>true</optional>
 		</dependency>
 		<!-- MySQL Connector -->
-		<dependency>
+		<!-- <dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>5.1.49</version>
 		    <scope>runtime</scope>
+		</dependency> -->
+		
+		<!-- postgesql connector-->
+		<dependency>
+		    <groupId>org.postgresql</groupId>
+		    <artifactId>postgresql</artifactId>
+		    <version>42.7.3</version> <!-- Latest version supported with Spring Boot 3.2+ -->
 		</dependency>
+
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -71,7 +80,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-
+		<!-- Spring Boot Mail -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
 		
 	</dependencies>
 

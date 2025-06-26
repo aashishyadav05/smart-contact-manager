@@ -11,10 +11,15 @@
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
-  background-color: #f9f9f9;
+  background-repeat: no-repeat;
+  background-image: url('/img/bg4.jpg');
+  background-size:cover;
+  background-position:center;
   color: #333;
   background-color: #e2e2e2;
 }
+
+
 
 .banner{
 	width:100%;
